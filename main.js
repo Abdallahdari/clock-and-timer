@@ -2,25 +2,25 @@ const hor = document.querySelector('.hour');
 const minutes = document.querySelector('.minute');
 const second = document.querySelector('.second');
 
-function updateTime() {
-hor.innerHTML=''
-minutes.innerHTML=''
-second.innerHTML=''
-    const date = new Date();
-    const hour = date.getHours();
-    const min = date.getMinutes();
-    const sec = date.getSeconds();
+// function updateTime() {
+// hor.innerHTML=''
+// minutes.innerHTML=''
+// second.innerHTML=''
+//     const date = new Date();
+//     const hour = date.getHours();
+//     const min = date.getMinutes();
+//     const sec = date.getSeconds();
     
     
-    hor.textContent = hour < 10 ? '0' + hour : hour;
-    minutes.textContent = min < 10 ? '0' + min : min;
-    second.textContent = sec < 10 ? '0' + sec : sec;
+//     hor.textContent = hour < 10 ? '0' + hour : hour;
+//     minutes.textContent = min < 10 ? '0' + min : min;
+//     second.textContent = sec < 10 ? '0' + sec : sec;
 
 
 
-}
-updateTime()
-setInterval(updateTime,1000)
+// }
+// updateTime()
+// setInterval(updateTime,1000)
 
 
 // Initial call to set the time immediately when the page loads
@@ -84,17 +84,24 @@ setInterval(updateTime,1000)
 
 // log();
 const label=document.querySelector('.label')
+const gf=document.querySelector('.gf')
 
 const start=function(){
     label.innerHTML=''
 
 const tic=function(){
+    const hour=Math.trunc(time/60)
     const mi=String(Math.trunc(time/60))
     const sec=String(Math.trunc(time%60));
-label.textContent= `${mi}:${sec}`;
+    hor.textContent=hour
+    minutes.textContent=mi
+second.textContent=sec
+    label.textContent= `${hour}:${mi}:${sec}`;
 if(time < 0){
-label.textContent=`it's time to rest go and take a break`
+label.textContent=`it's time to rest go and take a break!`
 label.classList.remove('animate-bounce')
+gf.classList.remove('animate-bounce')
+gf.textContent=`it's time to rest go and take a break`
 }
 time--;
 
