@@ -88,7 +88,9 @@ const gf=document.querySelector('.gf')
 
 const start=function(){
     label.innerHTML=''
-
+    let colorChanger=''
+const randomInt=(min,max)=>Math.floor(Math.random()*(max-min+1)+min)
+const rondomColor=()=>`rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`
 const tic=function(){
     const hour=Math.trunc(time/60)
     const mi=String(Math.trunc(time/60))
@@ -98,12 +100,30 @@ const tic=function(){
 second.textContent=sec
     label.textContent= `${hour}:${mi}:${sec}`;
 if(time < 0){
+   
 label.textContent=`it's time to rest go and take a break!`
 label.classList.remove('animate-bounce')
 gf.classList.remove('animate-bounce')
-gf.textContent=`it's time to rest go and take a break`
+gf.textContent=label.textContent
+clearInterval(colorChanger)
 }
-time--;
+else{
+   
+    const colorChanger=function(){
+        const change=()=>{
+        
+            const bre=document.querySelector('.bre')
+            bre.style.backgroundColor=rondomColor()
+        
+        }
+        change();
+        setInterval(change,1000);
+        
+        }
+        colorChanger()
+        time--;
+}
+
 
 }
 let time=10;
@@ -113,3 +133,10 @@ return sr
 
 }
 start()
+
+// document.querySelector('.bre').addEventListener('click',function(e){
+// e.preventDefault()
+// console.log(`${e.key} is pressed`) ;
+// this.style.backgroundColor=rondomColor()
+// })
+
